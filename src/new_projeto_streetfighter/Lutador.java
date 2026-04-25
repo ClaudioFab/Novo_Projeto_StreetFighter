@@ -1,6 +1,8 @@
 
 package new_projeto_streetfighter;
 
+import javax.swing.JOptionPane;
+
 public class Lutador {
     private String nome;
     private String nacionalidade;
@@ -110,9 +112,8 @@ public class Lutador {
     
     //METODOS-----------------------------------------------------------------
 
-    public void apresentar(){
-        //Deve demostrar as informações(atributos) do lutador.
-        
+    public void apresentar(){        
+        JOptionPane.showMessageDialog(null,"Nome: "+nome+"\nNacionalidade: "+nacionalidade+"\nIdade: "+idade+"\nAltura: "+altura+"\nPeso: "+peso+"\nCategoria: "+categoria+"\nVitórias: "+vitoria+"\nDerrotas: "+derrota+"\nEmpates: "+empate);        
     }
     
     public void status(){

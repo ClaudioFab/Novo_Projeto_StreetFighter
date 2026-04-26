@@ -14,15 +14,17 @@ public class Lutador {
     private int derrota;
     private int empate;
 
-    public Lutador(String nome, String nacionalidade, int idade, double altura, double peso, String categoria, int vitoria, int derrota, int empate) {
-        this.nome = nome;
-        this.nacionalidade = nacionalidade;
-        this.idade = idade;
-        this.altura = altura;
-        this.peso = peso;
-        this.vitoria = vitoria;
-        this.derrota = derrota;
-        this.empate = empate;
+    //Construtor--------------------------------------------------------------
+    public Lutador(String nome00, String nacionalidade00, int idade00, double altura00, double peso00, String categoria00, int vitoria00, int derrota00, int empate00) {
+        this.nome = nome00;
+        this.nacionalidade = nacionalidade00;
+        this.idade = idade00;
+        this.altura = altura00;
+        this.peso = peso00;
+        setCategoria(categoria00);
+        this.vitoria = vitoria00;
+        this.derrota = derrota00;
+        this.empate = empate00;
     }
 
     //GETTER------------------------------------------------------------------
@@ -65,75 +67,87 @@ public class Lutador {
     
     //SETTER------------------------------------------------------------------
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nome00) {
+        this.nome = nome00;
     }
 
-    public void setNacionalidade(String nacionalidade) {
-        this.nacionalidade = nacionalidade;
+    public void setNacionalidade(String nacionalidade00) {
+        this.nacionalidade = nacionalidade00;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setIdade(int idade00) {
+        this.idade = idade00;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    public void setAltura(double altura00) {
+        this.altura = altura00;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public void setPeso(double peso00) {
+        this.peso = peso00;
     }
 
-    public void setCategoria(String categoria) {
-        /*
-        Regras da Categoria
-        Peso menor que 52kg = “Invalido”
-        Peso menor ou igual a 70 kg = “Leve”
-        Peso menor ou igual a 83 kg = “Médio”
-        Peso menor ou igual a 110 kg = “Pesado”
-        Se nenhuma das opções = “Invalido”
-        Para facilitar, pode alterar esses parâmetros (regras de exceções) diretamente no setCategoria()
-        */
-        this.categoria = categoria;
+    public void setCategoria(String categoria00) {
+        if(peso < 52){
+            this.categoria="Inválido";
+        }else if(peso>=52 && peso<=70){
+            this.categoria="Leve";
+        }else if(peso>=71 && peso<=83){
+            this.categoria="Médio";
+        }else if(peso>=84 && peso<=110){
+            this.categoria="Pesado";
+        }else{
+            this.categoria="Inválido";
+        }
     }
 
-    public void setVitoria(int vitoria) {
-        this.vitoria = vitoria;
+    public void setVitoria(int vitoria00) {
+        this.vitoria++;
     }
 
-    public void setDerrota(int derrota) {
-        this.derrota = derrota;
+    public void setDerrota(int derrota00) {
+        this.derrota++;
     }
 
-    public void setEmpate(int empate) {
-        this.empate = empate;
+    public void setEmpate(int empate00) {
+        this.empate++;
     }
     
     //METODOS-----------------------------------------------------------------
 
     public void apresentar(){        
-        JOptionPane.showMessageDialog(null,"Nome: "+nome+"\nNacionalidade: "+nacionalidade+"\nIdade: "+idade+"\nAltura: "+altura+"\nPeso: "+peso+"\nCategoria: "+categoria+"\nVitórias: "+vitoria+"\nDerrotas: "+derrota+"\nEmpates: "+empate);        
+        JOptionPane.showMessageDialog(null,"-- Nome: "+nome+" --\nNacionalidade: "+nacionalidade+"\nIdade: "+idade+"\nAltura: "+altura+"\nPeso: "+peso+"\nCategoria: "+categoria+"\n","Player "+nome,JOptionPane.INFORMATION_MESSAGE);        
     }
     
-    public void status(){
-        // Deve demostrar as informações de vitorias,derrotas e empates do lutador.
+    public void status(Lutador A,Lutador B){        
+        Luta stat = new Luta(true);
+        stat.getDesafiante();
+        stat.getDesafiado();
         
+        JOptionPane.showMessageDialog(null,"-- Lutador: "+A.getNome()+" --\nVitórias: "+A.getVitoria()+"\nDerrotas: "+A.getDerrota()+"\nEmpates: "+A.getEmpate()+"\n\n"
+                + "-- Lutador: "+B.getNome()+" --\nVitórias: "+B.getVitoria()+"\nDerrotas: "+B.getDerrota()+"\nEmpates: "+B.getEmpate()+"\n","Status Geral",JOptionPane.INFORMATION_MESSAGE);
+        
+        if(A.getVitoria() == B.getVitoria()){
+            //empate   
+            JOptionPane.showMessageDialog(null,"O combate terminou em EMPATE TOTAL!","DRAW!",JOptionPane.WARNING_MESSAGE);
+        }else if(A.getVitoria() > B.getVitoria()){
+            JOptionPane.showMessageDialog(null,"O vencedor do combate é: "+A.getNome(),"WINNER!",JOptionPane.WARNING_MESSAGE);
+        }else{
+           JOptionPane.showMessageDialog(null,"O vencedor do combate é: "+B.getNome(),"WINNER!",JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 
     public void venceu(){
-        // Deve computar/calcular sempre a pontuação de cada lutador.
-        //Exemplo: setVitorias(getVitorias() + 1);
+        setVitoria(getVitoria()+1);
     }
     
     public void perdeu(){
-        // Deve computar/calcular sempre a pontuação de cada lutador.
-        //Exemplo: setDerrota(getDerrota() + 1);
+        setDerrota(getDerrota()+1);
     }
     
     public void empatou(){
-        // Deve computar/calcular sempre a pontuação de cada lutador.
-        //Exemplo: setEmpate(getEmpate() + 1);
+        setEmpate(getEmpate()+1);
     }
     
 }

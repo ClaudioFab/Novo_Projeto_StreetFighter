@@ -8,7 +8,7 @@ public class Luta {
     private Lutador desafiante;
     private Lutador desafiado;
     private int round;
-    private boolean aprovado;
+    private boolean aprovado=false;
 
     //CONSTRUTOR--------------------------------------------------------------
     public Luta(boolean aprovado) {
@@ -96,10 +96,13 @@ public class Luta {
         }else{
             Main_StreetFighter.retornarJogo(0);            
         }
-        
-
 
     }
+    public void resetRound() {
+        this.round =0;
+    }
+
+
     
     
     

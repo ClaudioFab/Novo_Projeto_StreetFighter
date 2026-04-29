@@ -19,7 +19,7 @@ public class Main_StreetFighter {
         p[0] = new Lutador("Ryu","Japão",35,1.75,71,null,0,0,0);
         p[1] = new Lutador("Ken","Estados Unidos",33,1.79,75,null,0,0,0);
         p[2] = new Lutador("Guile","Estados Unidos",45,1.82,86,null,0,0,0);
-        p[3] = new Lutador("Bison","Tailândia",55,1.82,110,null,0,0,0);
+        p[3] = new Lutador("M.Bison","Tailândia",55,1.82,110,null,0,0,0);
         p[4] = new Lutador("Chun-Li","China",30,1.69,55,null,0,0,0);
         p[5] = new Lutador("Cammy","Reino Unido",27,1.64,61,null,0,0,0);
 

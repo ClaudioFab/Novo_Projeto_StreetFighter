@@ -39,10 +39,10 @@ public class Select_Lutas extends javax.swing.JFrame {
         jLabelTopoTitulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabelPlayer1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txfPlayer1 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabelPlayer2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txfPlayer2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,9 +198,10 @@ public class Select_Lutas extends javax.swing.JFrame {
         jLabelPlayer1.setForeground(new java.awt.Color(105, 19, 149));
         jLabelPlayer1.setText("Player 1");
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        txfPlayer1.setEditable(false);
+        txfPlayer1.setBackground(new java.awt.Color(0, 0, 0));
+        txfPlayer1.setForeground(new java.awt.Color(255, 255, 255));
+        txfPlayer1.addActionListener(this::txfPlayer1ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -208,7 +209,7 @@ public class Select_Lutas extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1)
+                .addComponent(txfPlayer1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -221,7 +222,7 @@ public class Select_Lutas extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jLabelPlayer1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txfPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -233,9 +234,10 @@ public class Select_Lutas extends javax.swing.JFrame {
         jLabelPlayer2.setForeground(new java.awt.Color(105, 19, 149));
         jLabelPlayer2.setText("Player 2");
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        txfPlayer2.setEditable(false);
+        txfPlayer2.setBackground(new java.awt.Color(0, 0, 0));
+        txfPlayer2.setForeground(new java.awt.Color(255, 255, 255));
+        txfPlayer2.addActionListener(this::txfPlayer2ActionPerformed);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -243,7 +245,7 @@ public class Select_Lutas extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(txfPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -256,7 +258,7 @@ public class Select_Lutas extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabelPlayer2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2)
+                .addComponent(txfPlayer2)
                 .addContainerGap())
         );
 
@@ -316,21 +318,32 @@ public class Select_Lutas extends javax.swing.JFrame {
 
     private void jbKenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKenActionPerformed
         Lutador p2 = new Lutador("Ken","Estados Unidos",33,1.79,75,null,0,0,0);
+        
         p2.apresentar();
     }//GEN-LAST:event_jbKenActionPerformed
 
     private void jbRyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRyuActionPerformed
         Lutador p1 = new Lutador("Ryu","Japão",35,1.75,71,null,0,0,0);
+
+        String nome1 = String.valueOf("-- Nome: "+p1.getNome()+" --");
+        String nacional2 = String.valueOf("Nacionalidade: "+p1.getNacionalidade());
+        String idade3 = String.valueOf("Idade: "+p1.getIdade());
+        String altura4 = String.valueOf("Altura: "+p1.getAltura());
+        String peso5 = String.valueOf("Peso: "+p1.getPeso());
+        String categor6 = String.valueOf("Categoria: "+p1.getCategoria());
+
+        txfPlayer1.setText(nome1+"\n"+nacional2+"\n"+idade3+"\n"+altura4+"\n"+peso5+"\n"+categor6);
+
         p1.apresentar();
     }//GEN-LAST:event_jbRyuActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txfPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfPlayer1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txfPlayer1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txfPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfPlayer2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txfPlayer2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,13 +390,13 @@ public class Select_Lutas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbBison;
     private javax.swing.JButton jbCammy;
     private javax.swing.JButton jbChunLi;
     private javax.swing.JButton jbGuile;
     private javax.swing.JButton jbKen;
     private javax.swing.JButton jbRyu;
+    private javax.swing.JTextField txfPlayer1;
+    private javax.swing.JTextField txfPlayer2;
     // End of variables declaration//GEN-END:variables
 }

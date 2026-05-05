@@ -8,12 +8,8 @@ public class Luta {
     private Lutador desafiante;
     private Lutador desafiado;
     private int round;
-    private boolean aprovado=false;
 
     //CONSTRUTOR--------------------------------------------------------------
-    public Luta(boolean aprovado) {
-        this.aprovado = false;
-    }
 
     //GETTER------------------------------------------------------------------
         public Lutador getDesafiante() {
@@ -28,9 +24,6 @@ public class Luta {
         return round;
     }
 
-    public boolean isAprovado() {
-        return aprovado;
-    }
 
     //SETTER------------------------------------------------------------------
 
@@ -46,9 +39,6 @@ public class Luta {
         this.round++;
     }
 
-    public void setAprovado(boolean aprovado) {
-        this.aprovado = aprovado;
-    }
 
     //METODOS-----------------------------------------------------------------
 

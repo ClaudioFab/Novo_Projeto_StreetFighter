@@ -140,7 +140,7 @@ public class Lutador {
     }
     
     public void status(Lutador A,Lutador B){        
-        Luta stat = new Luta(true);
+        Luta stat = new Luta();
         stat.getDesafiante();
         stat.getDesafiado();
         

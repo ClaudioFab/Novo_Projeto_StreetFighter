@@ -4,11 +4,11 @@ package new_projeto_streetfighter;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
-public class Select_Lutas extends javax.swing.JFrame {
+public class SelectLutas extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Select_Lutas.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SelectLutas.class.getName());
 
-    public Select_Lutas() {
+    public SelectLutas() {
         initComponents();
     }
 
@@ -23,7 +23,7 @@ public class Select_Lutas extends javax.swing.JFrame {
     
     public void personagem(int seleciona){
         Random rand = new Random();
-
+        
         Lutador[] p = new Lutador[6];
         p[0] = new Lutador("Ryu","Japão",35,1.75,71,null,0,0,0,100,"Hadouken!");
         p[1] = new Lutador("Ken","Estados Unidos",33,1.79,75,null,0,0,0,100,"Shoryuken!");
@@ -86,6 +86,9 @@ public class Select_Lutas extends javax.swing.JFrame {
             
         } while (numRam == seleciona);
         
+        
+        
+
     }
     
 
@@ -119,7 +122,7 @@ public class Select_Lutas extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jbLutar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleção de Personagens");
 
         jPanel1.setBackground(new java.awt.Color(69, 69, 250));
@@ -267,7 +270,7 @@ public class Select_Lutas extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setToolTipText("");
 
         jLabelPlayer1.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
@@ -277,7 +280,7 @@ public class Select_Lutas extends javax.swing.JFrame {
         txAreaPlayer1.setEditable(false);
         txAreaPlayer1.setBackground(new java.awt.Color(0, 0, 0));
         txAreaPlayer1.setColumns(8);
-        txAreaPlayer1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txAreaPlayer1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txAreaPlayer1.setForeground(new java.awt.Color(255, 255, 255));
         txAreaPlayer1.setRows(5);
         jScrollPane1.setViewportView(txAreaPlayer1);
@@ -300,12 +303,12 @@ public class Select_Lutas extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabelPlayer1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setToolTipText("");
 
         jLabelPlayer2.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
@@ -315,7 +318,7 @@ public class Select_Lutas extends javax.swing.JFrame {
         txAreaPlayer2.setEditable(false);
         txAreaPlayer2.setBackground(new java.awt.Color(0, 0, 0));
         txAreaPlayer2.setColumns(8);
-        txAreaPlayer2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txAreaPlayer2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txAreaPlayer2.setForeground(new java.awt.Color(255, 255, 255));
         txAreaPlayer2.setRows(5);
         jScrollPane2.setViewportView(txAreaPlayer2);
@@ -330,7 +333,7 @@ public class Select_Lutas extends javax.swing.JFrame {
                 .addGap(77, 77, 77))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -339,8 +342,8 @@ public class Select_Lutas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelPlayer2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 102, 0));
@@ -391,13 +394,13 @@ public class Select_Lutas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -453,7 +456,7 @@ public class Select_Lutas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Select_Lutas().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new SelectLutas().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

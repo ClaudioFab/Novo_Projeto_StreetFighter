@@ -51,51 +51,31 @@ public class Luta {
     }
 
     //METODOS-----------------------------------------------------------------
-    
-    public void marcarLuta(Lutador A, Lutador B){
-        setDesafiante(A);
-        setDesafiado(B);
-        if(A.getCategoria()==B.getCategoria() && !getDesafiante().equals(getDesafiado())){
-            setAprovado(true);
-            JOptionPane.showMessageDialog(null,"Luta entre "+getDesafiante().getNome()+" e "+getDesafiado().getNome()+"...\nAPROVADA!","Verificando...",JOptionPane.WARNING_MESSAGE);
-            lutar(A,B);
 
-        }else{
-            JOptionPane.showMessageDialog(null,"Luta entre "+getDesafiante().getNome()+" e "+getDesafiado().getNome()+"...\nCANCELADA!","Verificando...",JOptionPane.ERROR_MESSAGE);
-            Main_StreetFighter.retornarJogo(0);
-        }
-
-        
-        
-    }
-    
     public void lutar(Lutador A, Lutador B){
-        if(isAprovado() == true){
-            getDesafiante();
-            getDesafiado();
-            setRound(round);
-            JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
-            Random aleatorio = new Random();
 
-            int vence = aleatorio.nextInt(3);
+        getDesafiante();
+        getDesafiado();
+        setRound(round);
+        JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
+        Random aleatorio = new Random();
 
-            if (vence == 0) {
-                JOptionPane.showMessageDialog(null,"Vencedor: " +A.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
-                A.setVitoria(A.getVitoria()+1);
-                B.setDerrota(B.getDerrota()+1);
-            } else if(vence == 1){
-                JOptionPane.showMessageDialog(null,"Vencedor: " +B.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
-                B.setVitoria(B.getVitoria()+1);
-                A.setDerrota(A.getDerrota()+1);
-            }else{
-                JOptionPane.showMessageDialog(null,"Empate entre "+A.getNome()+" e "+B.getNome(),"Empate!",JOptionPane.WARNING_MESSAGE);
-                A.setEmpate(A.getEmpate()+1);
-                B.setEmpate(B.getEmpate()+1); 
-            }
-            
+        int vence = aleatorio.nextInt(3);
+
+        if (vence == 0) {
+            JOptionPane.showMessageDialog(null,"Vencedor: " +A.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
+            A.setVitoria(A.getVitoria()+1);
+            B.setDerrota(B.getDerrota()+1);
+        } else if(vence == 1){
+            JOptionPane.showMessageDialog(null,"Vencedor: " +B.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
+            B.setVitoria(B.getVitoria()+1);
+            A.setDerrota(A.getDerrota()+1);
         }else{
-            Main_StreetFighter.retornarJogo(0);            
+            JOptionPane.showMessageDialog(null,"Empate entre "+A.getNome()+" e "+B.getNome(),"Empate!",JOptionPane.WARNING_MESSAGE);
+            A.setEmpate(A.getEmpate()+1);
+            B.setEmpate(B.getEmpate()+1); 
         }
+
 
     }
     public void resetRound() {

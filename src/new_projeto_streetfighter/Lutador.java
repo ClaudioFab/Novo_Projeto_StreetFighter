@@ -13,9 +13,11 @@ public class Lutador {
     private int vitoria;
     private int derrota;
     private int empate;
+    private int vida;
+    private String golpe;
 
     //Construtor--------------------------------------------------------------
-    public Lutador(String nome00, String nacionalidade00, int idade00, double altura00, double peso00, String categoria00, int vitoria00, int derrota00, int empate00) {
+    public Lutador(String nome00, String nacionalidade00, int idade00, double altura00, double peso00, String categoria00, int vitoria00, int derrota00, int empate00,int vida00,String golpe00) {
         this.nome = nome00;
         this.nacionalidade = nacionalidade00;
         this.idade = idade00;
@@ -25,6 +27,8 @@ public class Lutador {
         this.vitoria = vitoria00;
         this.derrota = derrota00;
         this.empate = empate00;
+        this.vida = vida00;
+        this.golpe = golpe00;
     }
 
     //GETTER------------------------------------------------------------------
@@ -63,6 +67,14 @@ public class Lutador {
 
     public int getEmpate() {
         return empate;
+    }
+    
+    public int getVida() {
+        return vida;
+    }
+    
+    public String getGolpe() {
+        return golpe;
     }
     
     //SETTER------------------------------------------------------------------
@@ -111,6 +123,14 @@ public class Lutador {
 
     public void setEmpate(int empate00) {
         this.empate++;
+    }
+    
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setGolpe(String golpe) {
+        this.golpe = golpe;
     }
     
     //METODOS-----------------------------------------------------------------

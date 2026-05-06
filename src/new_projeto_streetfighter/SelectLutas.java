@@ -7,7 +7,9 @@ import javax.swing.JOptionPane;
 public class SelectLutas extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SelectLutas.class.getName());
-
+    private Lutador player1;
+    private Lutador player2;
+    
     public SelectLutas() {
         initComponents();
     }
@@ -21,18 +23,17 @@ public class SelectLutas extends javax.swing.JFrame {
         System.exit(0);
     }
     
-    public void personagem(int seleciona){
-        Random rand = new Random();
-        
+    public void personagem(int numA){        
+
         Lutador[] p = new Lutador[6];
-        p[0] = new Lutador("Ryu","Japão",35,1.75,71,null,0,0,0,100,"Hadouken!");
-        p[1] = new Lutador("Ken","Estados Unidos",33,1.79,75,null,0,0,0,100,"Shoryuken!");
-        p[2] = new Lutador("Guile","Estados Unidos",45,1.82,86,null,0,0,0,110,"Sonic Boom!");
-        p[3] = new Lutador("M.Bison","Tailândia",55,1.82,110,null,0,0,0,110,"Psycho Power!");
-        p[4] = new Lutador("Chun-Li","China",30,1.69,55,null,0,0,0,90,"Lightning Kick!");
-        p[5] = new Lutador("Cammy","Reino Unido",27,1.64,61,null,0,0,0,90,"Spiral Arrow!");
+        p[0] = new Lutador("Ryu",null,0,0,0,null,0,null);
+        p[1] = new Lutador("Ken",null,0,0,0,null,0,null);
+        p[2] = new Lutador("Guile",null,0,0,0,null,0,null);
+        p[3] = new Lutador("M.Bison",null,0,0,0,null,0,null);
+        p[4] = new Lutador("Chun-Li",null,0,0,0,null,0,null);
+        p[5] = new Lutador("Cammy",null,0,0,0,null,0,null);
         
-        switch (seleciona) {
+        switch (numA) {
             case 0:
                 txAreaPlayer1.setText("Nome: "+p[0].getNome()+"\nNacionalidade: "+p[0].getNacionalidade()+"\nIdade: "+p[0].getIdade()+"\nAltura: "+p[0].getAltura()+"\nPeso: "+p[0].getPeso()+"\nCategoria: "+p[0].getCategoria()+"\nVida: "+p[0].getVida()+"\nGolpe: "+p[0].getGolpe());
                 break;
@@ -57,11 +58,11 @@ public class SelectLutas extends javax.swing.JFrame {
         
         
 
-        int numRam;
+        int numB;
         do {
-            numRam = rand.nextInt(0,5);
-        
-            switch (numRam) {
+            Random rand = new Random();
+            numB = rand.nextInt(6);
+            switch (numB) {
                 case 0:
                     txAreaPlayer2.setText("Nome: "+p[0].getNome()+"\nNacionalidade: "+p[0].getNacionalidade()+"\nIdade: "+p[0].getIdade()+"\nAltura: "+p[0].getAltura()+"\nPeso: "+p[0].getPeso()+"\nCategoria: "+p[0].getCategoria()+"\nVida: "+p[0].getVida()+"\nGolpe: "+p[0].getGolpe());
                     break;
@@ -84,13 +85,15 @@ public class SelectLutas extends javax.swing.JFrame {
                     throw new AssertionError();
             }
             
-        } while (numRam == seleciona);
+        } while (numB == numA);
         
-        
+
+        player1 = p[numA];
+        player2 = p[numB];
         
 
     }
-    
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -353,6 +356,7 @@ public class SelectLutas extends javax.swing.JFrame {
         jbLutar.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
         jbLutar.setForeground(new java.awt.Color(221, 77, 41));
         jbLutar.setText("Lutar!");
+        jbLutar.addActionListener(this::jbLutarActionPerformed);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -432,6 +436,20 @@ public class SelectLutas extends javax.swing.JFrame {
     private void jbRyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRyuActionPerformed
         personagem(0);
     }//GEN-LAST:event_jbRyuActionPerformed
+
+    private void jbLutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLutarActionPerformed
+        Luta go1 = new Luta(null,null,0,0,0,0,0,0,0);
+        try {
+            go1.lutar(player1,player2);
+            go1.lutar(player1,player2);
+            go1.lutar(player1,player2);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Nenhum Lutador selecionado!","Aviso!",JOptionPane.WARNING_MESSAGE);
+        }
+        go1.statusLuta(player1,player2);
+        go1.resetTudo();
+    }//GEN-LAST:event_jbLutarActionPerformed
 
     /**
      * @param args the command line arguments

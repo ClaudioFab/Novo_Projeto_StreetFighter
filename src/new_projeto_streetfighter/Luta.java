@@ -8,12 +8,33 @@ public class Luta {
     private Lutador desafiante;
     private Lutador desafiado;
     private int round;
+    private int vitoriaA;
+    private int derrotaA;
+    private int empateA;
+    
+    private int vitoriaB;
+    private int derrotaB;
+    private int empateB;
 
     //CONSTRUTOR--------------------------------------------------------------
 
+    public Luta(Lutador desafiante, Lutador desafiado, int round, int vitoriaA, int derrotaA, int empateA, int vitoriaB, int derrotaB, int empateB) {
+        this.desafiante = desafiante;
+        this.desafiado = desafiado;
+        this.round = round;
+        this.vitoriaA = vitoriaA;
+        this.derrotaA = derrotaA;
+        this.empateA = empateA;
+        
+        this.vitoriaB = vitoriaB;
+        this.derrotaB = derrotaB;
+        this.empateB = empateB;
+    }
+    
+
     //GETTER------------------------------------------------------------------
-        public Lutador getDesafiante() {
-        return desafiante;
+    public Lutador getDesafiante() {
+    return desafiante;
     }
 
     public Lutador getDesafiado() {
@@ -23,6 +44,33 @@ public class Luta {
     public int getRound() {
         return round;
     }
+
+    public int getVitoriaA() {
+        return vitoriaA;
+    }
+
+    public int getDerrotaA() {
+        return derrotaA;
+    }
+
+    public int getEmpateA() {
+        return empateA;
+    }
+
+    public int getVitoriaB() {
+        return vitoriaB;
+    }
+
+    public int getDerrotaB() {
+        return derrotaB;
+    }
+
+    public int getEmpateB() {
+        return empateB;
+    }
+
+    
+    
 
 
     //SETTER------------------------------------------------------------------
@@ -39,37 +87,88 @@ public class Luta {
         this.round++;
     }
 
+    public void setVitoriaA(int vitoriaA) {
+        this.vitoriaA++;
+    }
+
+    public void setDerrotaA(int derrotaA) {
+        this.derrotaA++;
+    }
+
+    public void setEmpateA(int empateA) {
+        this.empateA++;
+    }
+
+    public void setVitoriaB(int vitoriaB) {
+        this.vitoriaB++;
+    }
+
+    public void setDerrotaB(int derrotaB) {
+        this.derrotaB++;
+    }
+
+    public void setEmpateB(int empateB) {
+        this.empateB++;
+    }
+
+    
+    
 
     //METODOS-----------------------------------------------------------------
-
     public void lutar(Lutador A, Lutador B){
 
-        getDesafiante();
-        getDesafiado();
+        this.desafiante = A;
+        this.desafiado = B;
+        
         setRound(round);
         JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
-        Random aleatorio = new Random();
+        Random rand = new Random();
 
-        int vence = aleatorio.nextInt(3);
+        int vence = rand.nextInt(3);
 
         if (vence == 0) {
             JOptionPane.showMessageDialog(null,"Vencedor: " +A.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
-            A.setVitoria(A.getVitoria()+1);
-            B.setDerrota(B.getDerrota()+1);
+            setVitoriaA(vitoriaA);
+            setDerrotaB(derrotaB);
         } else if(vence == 1){
             JOptionPane.showMessageDialog(null,"Vencedor: " +B.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
-            B.setVitoria(B.getVitoria()+1);
-            A.setDerrota(A.getDerrota()+1);
+            setVitoriaB(vitoriaB);
+            setDerrotaA(derrotaA);
         }else{
             JOptionPane.showMessageDialog(null,"Empate entre "+A.getNome()+" e "+B.getNome(),"Empate!",JOptionPane.WARNING_MESSAGE);
-            A.setEmpate(A.getEmpate()+1);
-            B.setEmpate(B.getEmpate()+1); 
+            setEmpateA(empateA); 
+            setEmpateB(empateB); 
         }
-
+        
+        
 
     }
-    public void resetRound() {
-        this.round =0;
+    public void statusLuta(Lutador A,Lutador B){        
+        this.desafiante = A;
+        this.desafiado = B;
+        
+        JOptionPane.showMessageDialog(null,"-- Lutador: "+A.getNome()+" --\nVitórias: "+getVitoriaA()+"\nDerrotas: "+getDerrotaA()+"\nEmpates: "+getEmpateA()+"\n\n"
+                + "-- Lutador: "+B.getNome()+" --\nVitórias: "+getVitoriaB()+"\nDerrotas: "+getDerrotaB()+"\nEmpates: "+getEmpateB()+"\n","Status Geral",JOptionPane.INFORMATION_MESSAGE);
+        
+        if(getVitoriaA() == getVitoriaB()){  
+            JOptionPane.showMessageDialog(null,"O combate terminou em EMPATE TOTAL!","DRAW!",JOptionPane.WARNING_MESSAGE);
+        }else if(getVitoriaA() > getVitoriaB()){
+            JOptionPane.showMessageDialog(null,"O vencedor do combate é: "+A.getNome(),"WINNER!",JOptionPane.WARNING_MESSAGE);
+        }else{
+           JOptionPane.showMessageDialog(null,"O vencedor do combate é: "+B.getNome(),"WINNER!",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+
+    }
+    public void resetTudo() {
+        setRound(0);        
+        setVitoriaA(0);
+        setDerrotaA(0);
+        setEmpateA(0);        
+        setVitoriaB(0);
+        setDerrotaB(0);
+        setEmpateB(0);
     }
 
 

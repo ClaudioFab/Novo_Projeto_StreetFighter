@@ -13,10 +13,6 @@ public class SelectLutas extends javax.swing.JFrame {
     public SelectLutas() {
         initComponents();
     }
-
-    public static void iniciar(){        
-
-    }
     
     public static void finaliza(){
         JOptionPane.showMessageDialog(null,"Programa finalizado.","Encerrando",JOptionPane.INFORMATION_MESSAGE);
@@ -91,6 +87,7 @@ public class SelectLutas extends javax.swing.JFrame {
         player1 = p[numA];
         player2 = p[numB];
         
+        
 
     }
 
@@ -124,6 +121,9 @@ public class SelectLutas extends javax.swing.JFrame {
         txAreaPlayer2 = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jbLutar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuSelecionarSair = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleção de Personagens");
@@ -248,36 +248,38 @@ public class SelectLutas extends javax.swing.JFrame {
                 .addGap(66, 66, 66))
         );
 
-        jPanel2.setBackground(new java.awt.Color(231, 231, 231));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabelTopoTitulo.setFont(new java.awt.Font("Bookman Old Style", 3, 48)); // NOI18N
         jLabelTopoTitulo.setForeground(new java.awt.Color(69, 69, 250));
+        jLabelTopoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTopoTitulo.setText("Escolha seu Lutador");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelTopoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTopoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jLabelTopoTitulo)
-                .addGap(26, 26, 26))
+                .addContainerGap()
+                .addComponent(jLabelTopoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setToolTipText("");
 
         jLabelPlayer1.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
         jLabelPlayer1.setForeground(new java.awt.Color(105, 19, 149));
+        jLabelPlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPlayer1.setText("Player 1");
 
         txAreaPlayer1.setEditable(false);
@@ -285,7 +287,7 @@ public class SelectLutas extends javax.swing.JFrame {
         txAreaPlayer1.setColumns(8);
         txAreaPlayer1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txAreaPlayer1.setForeground(new java.awt.Color(255, 255, 255));
-        txAreaPlayer1.setRows(5);
+        txAreaPlayer1.setRows(8);
         jScrollPane1.setViewportView(txAreaPlayer1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -293,29 +295,29 @@ public class SelectLutas extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelPlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabelPlayer1)
+                .addContainerGap()
+                .addComponent(jLabelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setToolTipText("");
 
         jLabelPlayer2.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
         jLabelPlayer2.setForeground(new java.awt.Color(105, 19, 149));
+        jLabelPlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPlayer2.setText("Player 2");
 
         txAreaPlayer2.setEditable(false);
@@ -323,7 +325,7 @@ public class SelectLutas extends javax.swing.JFrame {
         txAreaPlayer2.setColumns(8);
         txAreaPlayer2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txAreaPlayer2.setForeground(new java.awt.Color(255, 255, 255));
-        txAreaPlayer2.setRows(5);
+        txAreaPlayer2.setRows(8);
         jScrollPane2.setViewportView(txAreaPlayer2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -332,30 +334,29 @@ public class SelectLutas extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jLabelPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelPlayer2)
+                .addComponent(jLabelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(204, 102, 0));
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jbLutar.setBackground(new java.awt.Color(153, 153, 153));
+        jbLutar.setBackground(new java.awt.Color(204, 45, 0));
         jbLutar.setFont(new java.awt.Font("Bookman Old Style", 3, 36)); // NOI18N
-        jbLutar.setForeground(new java.awt.Color(221, 77, 41));
+        jbLutar.setForeground(new java.awt.Color(255, 255, 255));
         jbLutar.setText("Lutar!");
+        jbLutar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbLutar.addActionListener(this::jbLutarActionPerformed);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -363,7 +364,7 @@ public class SelectLutas extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(jbLutar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -374,6 +375,23 @@ public class SelectLutas extends javax.swing.JFrame {
                 .addComponent(jbLutar, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuBar1MouseClicked(evt);
+            }
+        });
+
+        jMenuSelecionarSair.setText("Sair");
+        jMenuSelecionarSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSelecionarSairMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenuSelecionarSair);
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -394,16 +412,16 @@ public class SelectLutas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -439,7 +457,10 @@ public class SelectLutas extends javax.swing.JFrame {
 
     private void jbLutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLutarActionPerformed
         Luta go1 = new Luta(null,null,0,0,0,0,0,0,0);
+
         try {
+            TelaCombate c2 = new TelaCombate(player1, player2);
+            c2.setVisible(true);
             go1.lutar(player1,player2);
             go1.lutar(player1,player2);
             go1.lutar(player1,player2);
@@ -447,9 +468,18 @@ public class SelectLutas extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Nenhum Lutador selecionado!","Aviso!",JOptionPane.WARNING_MESSAGE);
         }
+        
         go1.statusLuta(player1,player2);
         go1.resetTudo();
     }//GEN-LAST:event_jbLutarActionPerformed
+
+    private void jMenuBar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseClicked
+        //
+    }//GEN-LAST:event_jMenuBar1MouseClicked
+
+    private void jMenuSelecionarSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSelecionarSairMouseClicked
+        finaliza();
+    }//GEN-LAST:event_jMenuSelecionarSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -487,6 +517,9 @@ public class SelectLutas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPlayer2;
     private javax.swing.JLabel jLabelRyu;
     private javax.swing.JLabel jLabelTopoTitulo;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuSelecionarSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

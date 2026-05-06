@@ -1,8 +1,6 @@
 
 package new_projeto_streetfighter;
 
-import javax.swing.JOptionPane;
-
 public class Lutador {
     private String nome;
     private String nacionalidade;
@@ -229,5 +227,6 @@ public class Lutador {
 
     
     //METODOS-----------------------------------------------------------------
+    //nada ainda.
 
 }

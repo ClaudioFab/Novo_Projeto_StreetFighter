@@ -14,11 +14,14 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jMenuBarTelaInicial = new javax.swing.JMenuBar();
+        jMenuBarOption = new javax.swing.JMenu();
+        jMenuBarSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Inicial");
 
-        jPanel1.setBackground(new java.awt.Color(231, 231, 231));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_SF2/5bbc076d085b1-4c73481585937b083b494daad8ab65f2.png"))); // NOI18N
@@ -39,7 +42,7 @@ public class TelaInicial extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -48,8 +51,21 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(160, 160, 160)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
+
+        jMenuBarOption.setText("Opções");
+        jMenuBarTelaInicial.add(jMenuBarOption);
+
+        jMenuBarSair.setText("Sair");
+        jMenuBarSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuBarSairMouseClicked(evt);
+            }
+        });
+        jMenuBarTelaInicial.add(jMenuBarSair);
+
+        setJMenuBar(jMenuBarTelaInicial);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,7 +93,22 @@ public class TelaInicial extends javax.swing.JFrame {
         c1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuBarSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBarSairMouseClicked
+        SelectLutas.finaliza();
+    }//GEN-LAST:event_jMenuBarSairMouseClicked
+
     public static void main(String args[]) {
+        
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         java.awt.EventQueue.invokeLater(() -> new TelaInicial().setVisible(true));
@@ -86,6 +117,9 @@ public class TelaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenuBarOption;
+    private javax.swing.JMenu jMenuBarSair;
+    private javax.swing.JMenuBar jMenuBarTelaInicial;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 

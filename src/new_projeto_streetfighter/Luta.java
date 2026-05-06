@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class Luta {
-    private Lutador desafiante;
-    private Lutador desafiado;
+    public Lutador desafiante;
+    public Lutador desafiado;
     private int round;
     private int vitoriaA;
     private int derrotaA;
@@ -121,7 +121,11 @@ public class Luta {
         this.desafiado = B;
         
         setRound(round);
-        JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n","Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
+        
+
+
+//JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
         Random rand = new Random();
 
         int vence = rand.nextInt(3);

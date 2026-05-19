@@ -2,7 +2,6 @@
 package new_projeto_streetfighter;
 
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 public class Luta {
     public Lutador desafiante;
@@ -115,20 +114,21 @@ public class Luta {
     
 
     //METODOS-----------------------------------------------------------------
+
     public void lutar(Lutador A, Lutador B){
+
 
         this.desafiante = A;
         this.desafiado = B;
         
         setRound(round);
-        JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n","Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
-        
+        //JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n","Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
 
-
-//JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n"+A.getNome()+" vs "+B.getNome(),"Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
         Random rand = new Random();
 
         int vence = rand.nextInt(3);
+
+        /*
 
         if (vence == 0) {
             JOptionPane.showMessageDialog(null,"Vencedor: " +A.getNome(),"Vitória!",JOptionPane.WARNING_MESSAGE);
@@ -143,7 +143,7 @@ public class Luta {
             setEmpateA(empateA); 
             setEmpateB(empateB); 
         }
-        
+        */
         
 
     }
@@ -151,6 +151,7 @@ public class Luta {
         this.desafiante = A;
         this.desafiado = B;
         
+        /*
         JOptionPane.showMessageDialog(null,"-- Lutador: "+A.getNome()+" --\nVitórias: "+getVitoriaA()+"\nDerrotas: "+getDerrotaA()+"\nEmpates: "+getEmpateA()+"\n\n"
                 + "-- Lutador: "+B.getNome()+" --\nVitórias: "+getVitoriaB()+"\nDerrotas: "+getDerrotaB()+"\nEmpates: "+getEmpateB()+"\n","Status Geral",JOptionPane.INFORMATION_MESSAGE);
         
@@ -161,7 +162,7 @@ public class Luta {
         }else{
            JOptionPane.showMessageDialog(null,"O vencedor do combate é: "+B.getNome(),"WINNER!",JOptionPane.WARNING_MESSAGE);
         }
-        
+        */
         
 
     }

@@ -3,7 +3,7 @@ package new_projeto_streetfighter;
 
 public class TelaCombate extends javax.swing.JFrame {
     private Luta luta;
-    
+
     public TelaCombate() {
         initComponents();
 
@@ -16,11 +16,36 @@ public class TelaCombate extends javax.swing.JFrame {
         
         luta = new Luta(null, null, 0, 0, 0, 0, 0, 0, 0);
         
-        jTextAreaTela.setText(+(luta.getRound()+1)+"º Round: \n"+A.getNome()+" vs "+B.getNome());
-        
+        jTextVisorCombate.setText(+(luta.getRound()+1)+"º Round: \n"+A.getNome()+" vs "+B.getNome());
         
         
     }
+    
+    public void ataque(int dano){
+        //como buscar player 1 e player 2 e seus atributos para ca ?.
+
+        luta = new Luta(null, null, 0, 0, 0, 0, 0, 0, 0);
+ 
+        String mensagem ="";
+        
+        //mensagem +=A.getNome()+" Ataca com "+dano+" de Dano!";
+        
+        mensagem +="Player1 ataca com "+dano+" de Dano!";
+        
+        //Aqui roda um random onde o computador(player2) pode ou não defender.
+        
+        //Se defender toma metade do dano, se não defender toma todo dano.
+        
+        //Em seguida computador(player2) ataca e volta para botões.
+        
+        //Se o player defender recebe metade, se atacar toma dano completo.
+        //e recomeça.
+        
+        //Especial só pode ser usado com metade da vida ou menos.
+        
+        jTextVisorCombate.setText(jTextVisorCombate.getText()+"\n"+mensagem);
+    }
+    
     
 
 
@@ -40,12 +65,19 @@ public class TelaCombate extends javax.swing.JFrame {
         jbAtaque = new javax.swing.JButton();
         jbDefesa = new javax.swing.JButton();
         jbEspecial = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextAreaTela = new javax.swing.JTextArea();
+        jPanelVisorCombate = new javax.swing.JPanel();
+        jScrollPaneVisorCombate = new javax.swing.JScrollPane();
+        jTextVisorCombate = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Combate");
+        setTitle("Street Fake Fighter");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                voltarSeleciona(evt);
+            }
+        });
 
         jPanelPlay1.setBackground(new java.awt.Color(204, 204, 204));
         jPanelPlay1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -69,7 +101,7 @@ public class TelaCombate extends javax.swing.JFrame {
         jPanelPlay1Layout.setHorizontalGroup(
             jPanelPlay1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlay1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanelPlay1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabelCombatPlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
@@ -82,7 +114,7 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addComponent(jLabelCombatPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelPlay2.setBackground(new java.awt.Color(204, 204, 204));
@@ -107,7 +139,7 @@ public class TelaCombate extends javax.swing.JFrame {
         jPanelPlay2Layout.setHorizontalGroup(
             jPanelPlay2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlay2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanelPlay2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabelCombatPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
@@ -120,77 +152,102 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addComponent(jLabelCombatPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPanelBotoesCombat.setBackground(new java.awt.Color(204, 204, 204));
-        jPanelBotoesCombat.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelBotoesCombat.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Player 1", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bookman Old Style", 3, 18), new java.awt.Color(105, 19, 149))); // NOI18N
 
         jbAtaque.setBackground(new java.awt.Color(105, 19, 149));
         jbAtaque.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbAtaque.setForeground(new java.awt.Color(255, 255, 255));
         jbAtaque.setText("Atacar!");
+        jbAtaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtaqueActionPerformed(evt);
+            }
+        });
 
         jbDefesa.setBackground(new java.awt.Color(105, 19, 149));
         jbDefesa.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbDefesa.setForeground(new java.awt.Color(255, 255, 255));
         jbDefesa.setText("Defender!");
+        jbDefesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDefesaActionPerformed(evt);
+            }
+        });
 
         jbEspecial.setBackground(new java.awt.Color(204, 45, 0));
         jbEspecial.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbEspecial.setForeground(new java.awt.Color(255, 255, 255));
         jbEspecial.setText("Golpe Especial!");
+        jbEspecial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEspecialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBotoesCombatLayout = new javax.swing.GroupLayout(jPanelBotoesCombat);
         jPanelBotoesCombat.setLayout(jPanelBotoesCombatLayout);
         jPanelBotoesCombatLayout.setHorizontalGroup(
             jPanelBotoesCombatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBotoesCombatLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(jPanelBotoesCombatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbDefesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbEspecial))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jbAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jbDefesa, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbEspecial)
+                .addGap(20, 20, 20))
         );
         jPanelBotoesCombatLayout.setVerticalGroup(
             jPanelBotoesCombatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBotoesCombatLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(jbDefesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(jbEspecial, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+            .addGroup(jPanelBotoesCombatLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelBotoesCombatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbDefesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEspecial, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(69, 69, 250));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelVisorCombate.setBackground(new java.awt.Color(69, 69, 250));
+        jPanelVisorCombate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTextAreaTela.setBackground(new java.awt.Color(0, 0, 0));
-        jTextAreaTela.setColumns(10);
-        jTextAreaTela.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextAreaTela.setForeground(new java.awt.Color(255, 255, 255));
-        jTextAreaTela.setRows(15);
-        jScrollPane3.setViewportView(jTextAreaTela);
+        jTextVisorCombate.setBackground(new java.awt.Color(0, 0, 0));
+        jTextVisorCombate.setColumns(37);
+        jTextVisorCombate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextVisorCombate.setForeground(new java.awt.Color(255, 255, 255));
+        jTextVisorCombate.setRows(15);
+        jScrollPaneVisorCombate.setViewportView(jTextVisorCombate);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelVisorCombateLayout = new javax.swing.GroupLayout(jPanelVisorCombate);
+        jPanelVisorCombate.setLayout(jPanelVisorCombateLayout);
+        jPanelVisorCombateLayout.setHorizontalGroup(
+            jPanelVisorCombateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVisorCombateLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPaneVisorCombate, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+        jPanelVisorCombateLayout.setVerticalGroup(
+            jPanelVisorCombateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVisorCombateLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jScrollPaneVisorCombate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
+
+        jMenu1.setText("Sair");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuCombateSairMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,13 +255,13 @@ public class TelaCombate extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPlay1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelBotoesCombat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelPlay2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelPlay1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelPlay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelBotoesCombat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelVisorCombate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -213,17 +270,38 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelPlay1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelPlay2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelPlay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelBotoesCombat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelBotoesCombat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelVisorCombate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarSeleciona(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_voltarSeleciona
+        SelectLutas c1 = new SelectLutas();
+        c1.setVisible(true);
+    }//GEN-LAST:event_voltarSeleciona
+
+    private void jMenuCombateSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCombateSairMouseClicked
+        SelectLutas.finaliza();
+    }//GEN-LAST:event_jMenuCombateSairMouseClicked
+
+    private void jbAtaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtaqueActionPerformed
+        ataque(20);
+    }//GEN-LAST:event_jbAtaqueActionPerformed
+
+    private void jbDefesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDefesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbDefesaActionPerformed
+
+    private void jbEspecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEspecialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEspecialActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -260,14 +338,16 @@ public class TelaCombate extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelCombatPlayer1;
     private javax.swing.JLabel jLabelCombatPlayer2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelBotoesCombat;
     private javax.swing.JPanel jPanelPlay1;
     private javax.swing.JPanel jPanelPlay2;
+    private javax.swing.JPanel jPanelVisorCombate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextAreaTela;
+    private javax.swing.JScrollPane jScrollPaneVisorCombate;
+    private javax.swing.JTextArea jTextVisorCombate;
     private javax.swing.JButton jbAtaque;
     private javax.swing.JButton jbDefesa;
     private javax.swing.JButton jbEspecial;

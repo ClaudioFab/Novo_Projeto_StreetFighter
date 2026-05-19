@@ -1,53 +1,128 @@
-
 package new_projeto_streetfighter;
 
+import java.util.Random;
+
 public class TelaCombate extends javax.swing.JFrame {
+
+    private Lutador player1;
+    private Lutador player2;
+
+    private int vidaPlayer1;
+    private int vidaPlayer2;
+
     private Luta luta;
 
     public TelaCombate() {
         initComponents();
 
     }
+
     public TelaCombate(Lutador A, Lutador B) {
         initComponents();
 
-        txAreaCombatPlayer1.setText("Nome: "+A.getNome()+"\nVida: "+A.getVida()+"\nGolpe: "+A.getGolpe());
-        txAreaCombatPlayer2.setText("Nome: "+B.getNome()+"\nVida: "+B.getVida()+"\nGolpe: "+B.getGolpe());
-        
-        luta = new Luta(null, null, 0, 0, 0, 0, 0, 0, 0);
-        
-        jTextVisorCombate.setText(+(luta.getRound()+1)+"º Round: \n"+A.getNome()+" vs "+B.getNome());
-        
-        
-    }
-    
-    public void ataque(int dano){
-        //como buscar player 1 e player 2 e seus atributos para ca ?.
+        this.player1 = A;
+        this.player2 = B;
+        this.vidaPlayer1 = A.getVida();
+        this.vidaPlayer2 = B.getVida();
 
-        luta = new Luta(null, null, 0, 0, 0, 0, 0, 0, 0);
- 
-        String mensagem ="";
-        
-        //mensagem +=A.getNome()+" Ataca com "+dano+" de Dano!";
-        
-        mensagem +="Player1 ataca com "+dano+" de Dano!";
-        
-        //Aqui roda um random onde o computador(player2) pode ou não defender.
-        
-        //Se defender toma metade do dano, se não defender toma todo dano.
-        
-        //Em seguida computador(player2) ataca e volta para botões.
-        
-        //Se o player defender recebe metade, se atacar toma dano completo.
-        //e recomeça.
-        
-        //Especial só pode ser usado com metade da vida ou menos.
-        
-        jTextVisorCombate.setText(jTextVisorCombate.getText()+"\n"+mensagem);
-    }
-    
-    
+        luta = new Luta(player1, player2, 0, 0, 0, 0, 0, 0, 0);
 
+        novoRound();
+
+    }
+
+    public void novoRound() {
+
+        vidaPlayer1 = player1.getVida();
+        vidaPlayer2 = player2.getVida();
+
+        atualizarTela();
+
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" +(luta.getRound()+1) + "º ROUND =============\n" + player1.getNome() + " vs " + player2.getNome() + "...Lutem!\n");
+    }
+
+    public void atualizarTela() {
+        txAreaCombatPlayer1.setText("Nome: " + player1.getNome() + "\nVida: " + vidaPlayer1 + "\nEspecial: " + player1.getGolpe());
+        txAreaCombatPlayer2.setText("Nome: " + player2.getNome() + "\nVida: " + vidaPlayer2 + "\nEspecial: " + player2.getGolpe());
+    }
+
+    public void ataque(int dano) {
+
+        Random rand = new Random();
+
+        boolean defesaPlayer2 = rand.nextBoolean();
+
+        String mensagem = "";
+
+        mensagem += player1.getNome() + " ataca com " + dano + " de dano!\n";
+
+        if (defesaPlayer2) {
+            mensagem += player2.getNome() + " defendeu!\n";
+            vidaPlayer2 -= (dano / 2);
+            mensagem += player2.getNome() + " perde 10 de vida\n";
+        } else {
+            mensagem += player2.getNome() + " não conseguiu defender!\n";
+            vidaPlayer2 -= dano;
+            mensagem += player2.getNome() + " perde 20 de vida\n";
+        }
+
+        if (vidaPlayer2 <= 0) {
+            vidaPlayer2 = 0;
+            mensagem += "\n" + player2.getNome() + " foi derrotado!\n";
+
+            mensagem += "\n" + player1.getNome() + " VENCE O ROUND!!\n";
+
+            atualizarTela();
+
+            mensagem += "\n====================\n";
+
+            jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+
+            luta.setRound(luta.getRound() + 1);
+            novoRound();
+        }
+
+        mensagem += "\n====================\n";
+
+        atualizarTela();
+
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+    }
+
+    public void defesa(int dano) {
+
+        String mensagem = "";
+
+        mensagem += player1.getNome() + " defende!\n";
+
+        mensagem += player2.getNome() + " ataca e causa " + (dano / 2) + " de dano!\n";
+        vidaPlayer1 -= (dano / 2);
+        mensagem += player1.getNome() + " perde 10 de vida\n";
+
+        if (vidaPlayer1 <= 0) {
+            vidaPlayer1 = 0;
+            mensagem += "\n" + player1.getNome() + " foi derrotado!\n";
+
+            mensagem += "\n" + player2.getNome() + " VENCE O ROUND!!\n";
+
+            atualizarTela();
+
+            mensagem += "\n====================\n";
+
+            jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+
+            luta.setRound(luta.getRound() + 1);
+            novoRound();
+
+        }
+
+        atualizarTela();
+
+        mensagem += "\n====================\n";
+
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -296,7 +371,7 @@ public class TelaCombate extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAtaqueActionPerformed
 
     private void jbDefesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDefesaActionPerformed
-        // TODO add your handling code here:
+        defesa(20);
     }//GEN-LAST:event_jbDefesaActionPerformed
 
     private void jbEspecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEspecialActionPerformed

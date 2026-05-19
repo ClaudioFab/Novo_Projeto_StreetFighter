@@ -68,10 +68,6 @@ public class Luta {
         return empateB;
     }
 
-    
-    
-
-
     //SETTER------------------------------------------------------------------
 
     public void setDesafiante(Lutador desafiante) {
@@ -83,7 +79,7 @@ public class Luta {
     }
 
     public void setRound(int round) {
-        this.round++;
+        this.round= round;
     }
 
     public void setVitoriaA(int vitoriaA) {
@@ -110,9 +106,6 @@ public class Luta {
         this.empateB++;
     }
 
-    
-    
-
     //METODOS-----------------------------------------------------------------
 
     public void lutar(Lutador A, Lutador B){
@@ -121,7 +114,7 @@ public class Luta {
         this.desafiante = A;
         this.desafiado = B;
         
-        setRound(round);
+        //setRound(round);
         //JOptionPane.showMessageDialog(null,+getRound()+"º Round: \n","Round "+getRound(),JOptionPane.INFORMATION_MESSAGE);
 
         Random rand = new Random();
@@ -167,7 +160,7 @@ public class Luta {
 
     }
     public void resetTudo() {
-        setRound(0);        
+        setRound(0);
         setVitoriaA(0);
         setDerrotaA(0);
         setEmpateA(0);        

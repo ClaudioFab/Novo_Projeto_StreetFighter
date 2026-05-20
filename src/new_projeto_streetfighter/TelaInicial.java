@@ -25,11 +25,11 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelIniciarTotal.setBackground(new java.awt.Color(204, 204, 204));
         jPanelIniciarTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelLogoSFF.setFont(new java.awt.Font("Bookman Old Style", 1, 90)); // NOI18N
+        jLabelLogoSFF.setFont(new java.awt.Font("Bookman Old Style", 3, 70)); // NOI18N
         jLabelLogoSFF.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogoSFF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoSFF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_SF2/5bbc076d085b1-4c73481585937b083b494daad8ab65f2.png"))); // NOI18N
-        jLabelLogoSFF.setText("  Fake ");
+        jLabelLogoSFF.setText(" Fake ");
         jLabelLogoSFF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButtonIniciarComecar.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N

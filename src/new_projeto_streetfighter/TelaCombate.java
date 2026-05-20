@@ -1,8 +1,11 @@
 package new_projeto_streetfighter;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class TelaCombate extends javax.swing.JFrame {
+
+    private Luta luta;
 
     private Lutador player1;
     private Lutador player2;
@@ -10,20 +13,22 @@ public class TelaCombate extends javax.swing.JFrame {
     private int vidaPlayer1;
     private int vidaPlayer2;
 
-    private Luta luta;
-
     public TelaCombate() {
         initComponents();
 
     }
 
-    public TelaCombate(Lutador A, Lutador B) {
+    //CONSTRUTOR----------------------------------------------------------------
+    //Puxando personagem e seus atributos
+    //Puxando a "vida" usada apenas para combate a partir de int vida/classe Lutador.
+    //Em seguida inicia o metodo novoRound.
+    public TelaCombate(Lutador player1, Lutador player2) {
         initComponents();
 
-        this.player1 = A;
-        this.player2 = B;
-        this.vidaPlayer1 = A.getVida();
-        this.vidaPlayer2 = B.getVida();
+        this.player1 = player1;
+        this.player2 = player2;
+        this.vidaPlayer1 = player1.getVida();
+        this.vidaPlayer2 = player2.getVida();
 
         luta = new Luta(player1, player2, 0, 0, 0, 0, 0, 0, 0);
 
@@ -31,6 +36,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
     }
 
+    //Inicia o round no texto
     public void novoRound() {
 
         vidaPlayer1 = player1.getVida();
@@ -38,24 +44,32 @@ public class TelaCombate extends javax.swing.JFrame {
 
         atualizarTela();
 
-        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" +(luta.getRound()+1) + "º ROUND =============\n" + player1.getNome() + " vs " + player2.getNome() + "...Lutem!\n");
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + (luta.getRound() + 1) + "º ROUND =============\n" + player1.getNome() + " vs " + player2.getNome() + "...Lutem!\n");
     }
 
+    //Atualiza os dados nas 2 telas txAreaCombatPlayer1/2
+    //Exp: perda de vida e perda de especial.
     public void atualizarTela() {
         txAreaCombatPlayer1.setText("Nome: " + player1.getNome() + "\nVida: " + vidaPlayer1 + "\nEspecial: " + player1.getGolpe());
         txAreaCombatPlayer2.setText("Nome: " + player2.getNome() + "\nVida: " + vidaPlayer2 + "\nEspecial: " + player2.getGolpe());
     }
 
+    //Ação após apertar botão "Atacar!"
     public void ataque(int dano) {
 
+        //Random iniciado para computador defender ou não.
         Random rand = new Random();
-
         boolean defesaPlayer2 = rand.nextBoolean();
 
         String mensagem = "";
 
-        mensagem += player1.getNome() + " ataca com " + dano + " de dano!\n";
+        //mensagem += player1.getNome() + " ataca com " + dano + " de dano!\n";
 
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" +player1.getNome() + " ataca com " + dano + " de dano!\n");
+        
+        //pausa(1000);
+        
+        //If de decisão para o computador defender ou não.
         if (defesaPlayer2) {
             mensagem += player2.getNome() + " defendeu!\n";
             vidaPlayer2 -= (dano / 2);
@@ -66,29 +80,40 @@ public class TelaCombate extends javax.swing.JFrame {
             mensagem += player2.getNome() + " perde 20 de vida\n";
         }
 
+        //if de perda total de vida ou continuidade.
         if (vidaPlayer2 <= 0) {
             vidaPlayer2 = 0;
-            mensagem += "\n" + player2.getNome() + " foi derrotado!\n";
+            mensagem += "\nPlayer2 " + player2.getNome() + " foi derrotado!\n";
 
-            mensagem += "\n" + player1.getNome() + " VENCE O ROUND!!\n";
+            mensagem += "\nPlayer1 " + player1.getNome() + " VENCE O ROUND!!\n";
 
             atualizarTela();
 
             mensagem += "\n====================\n";
 
-            jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+            enviaMensagem(mensagem);
 
+
+            //Envia para o método lutar na classe Luta.
+            luta.lutar(player1, player2, 1);
+
+            //Adiciona um round na classe Luta.
             luta.setRound(luta.getRound() + 1);
-            novoRound();
+
+        } else {
+            mensagem += "\n====================\n";
+
+            atualizarTela();
+
+            enviaMensagem(mensagem);
+
+            jbAtaque.setEnabled(false);
+
         }
 
-        mensagem += "\n====================\n";
-
-        atualizarTela();
-
-        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
     }
 
+    //Ação após apertar botão "Defender!"
     public void defesa(int dano) {
 
         String mensagem = "";
@@ -101,26 +126,57 @@ public class TelaCombate extends javax.swing.JFrame {
 
         if (vidaPlayer1 <= 0) {
             vidaPlayer1 = 0;
-            mensagem += "\n" + player1.getNome() + " foi derrotado!\n";
+            mensagem += "\nPlayer1 " + player1.getNome() + " foi derrotado!\n";
 
-            mensagem += "\n" + player2.getNome() + " VENCE O ROUND!!\n";
+            mensagem += "\nPlayer2 " + player2.getNome() + " VENCE O ROUND!!\n";
 
             atualizarTela();
 
             mensagem += "\n====================\n";
 
-            jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+            enviaMensagem(mensagem);
 
+            //Envia para o método lutar na classe Luta.
+            luta.lutar(player1, player2, 2);
+
+            //Adiciona um round na classe Luta.
             luta.setRound(luta.getRound() + 1);
-            novoRound();
 
+        } else {
+            atualizarTela();
+
+            mensagem += "\n====================\n";
+
+            enviaMensagem(mensagem);
+
+            jbAtaque.setEnabled(true);
         }
 
-        atualizarTela();
+    }
 
-        mensagem += "\n====================\n";
+    //Ação após apertar botão "Especial!"
+    public void especial() {
+        if (vidaPlayer1 <= 50) {
+            JOptionPane.showMessageDialog(null, "<html><b>" + player1.getNome() + ": " + player1.getGolpe() + "!</b></html>", "Ativar Especial!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><b>" + player1.getGolpe() + " falhou!<br>Especial não está pronto!</b></html>", "Especial Falha", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
+    //Receber e transmitir texto para tela jTextVisorCombate.
+    public void enviaMensagem(String mensagem){
         jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + mensagem);
+    }
+    
+    //Pausa para as mensagens.
+    public void pausa(int go) {
+        //inicia
+        try {
+            // Pausa a execução por milissegundos 
+            Thread.sleep(go);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -368,6 +424,8 @@ public class TelaCombate extends javax.swing.JFrame {
 
     private void jbAtaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtaqueActionPerformed
         ataque(20);
+        //jbAtaque.setEnabled(false);
+
     }//GEN-LAST:event_jbAtaqueActionPerformed
 
     private void jbDefesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDefesaActionPerformed
@@ -375,7 +433,7 @@ public class TelaCombate extends javax.swing.JFrame {
     }//GEN-LAST:event_jbDefesaActionPerformed
 
     private void jbEspecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEspecialActionPerformed
-        // TODO add your handling code here:
+        especial();
     }//GEN-LAST:event_jbEspecialActionPerformed
 
     public static void main(String args[]) {

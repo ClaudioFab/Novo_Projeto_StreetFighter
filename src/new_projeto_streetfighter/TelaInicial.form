@@ -103,7 +103,7 @@
         <Component class="javax.swing.JLabel" name="jLabelLogoSFF">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="90" style="1"/>
+              <Font name="Bookman Old Style" size="70" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -112,7 +112,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img_SF2/5bbc076d085b1-4c73481585937b083b494daad8ab65f2.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="  Fake "/>
+            <Property name="text" type="java.lang.String" value=" Fake "/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>

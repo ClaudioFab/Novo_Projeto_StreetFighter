@@ -465,9 +465,6 @@ public class SelectLutas extends javax.swing.JFrame {
         try {
             TelaCombate c2 = new TelaCombate(player1, player2);
             c2.setVisible(true);
-            go1.lutar(player1,player2);
-            go1.lutar(player1,player2);
-            go1.lutar(player1,player2);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Nenhum Lutador selecionado!","Aviso!",JOptionPane.WARNING_MESSAGE);

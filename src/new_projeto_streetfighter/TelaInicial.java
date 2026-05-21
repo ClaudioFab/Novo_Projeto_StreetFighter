@@ -15,6 +15,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelIniciarTotal = new javax.swing.JPanel();
         jLabelLogoSFF = new javax.swing.JLabel();
         jButtonIniciarComecar = new javax.swing.JButton();
+        jPanelBaixoTelaInicial = new javax.swing.JPanel();
         jMenuBarTelaInicial = new javax.swing.JMenuBar();
         jMenuBarOption = new javax.swing.JMenu();
         jMenuBarSair = new javax.swing.JMenu();
@@ -25,11 +26,11 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelIniciarTotal.setBackground(new java.awt.Color(204, 204, 204));
         jPanelIniciarTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelLogoSFF.setFont(new java.awt.Font("Bookman Old Style", 3, 70)); // NOI18N
+        jLabelLogoSFF.setFont(new java.awt.Font("Algerian", 3, 70)); // NOI18N
         jLabelLogoSFF.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogoSFF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoSFF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img_SF2/5bbc076d085b1-4c73481585937b083b494daad8ab65f2.png"))); // NOI18N
-        jLabelLogoSFF.setText(" Fake ");
+        jLabelLogoSFF.setText("<html><span style=\"text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);\">Fake</span></html>");
         jLabelLogoSFF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButtonIniciarComecar.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N
@@ -41,21 +42,39 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelIniciarTotalLayout.setHorizontalGroup(
             jPanelIniciarTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIniciarTotalLayout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addGroup(jPanelIniciarTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonIniciarComecar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelLogoSFF, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93))
+                .addGap(100, 100, 100))
         );
         jPanelIniciarTotalLayout.setVerticalGroup(
             jPanelIniciarTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIniciarTotalLayout.createSequentialGroup()
                 .addGap(148, 148, 148)
-                .addComponent(jLabelLogoSFF)
+                .addComponent(jLabelLogoSFF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160)
                 .addComponent(jButtonIniciarComecar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
+
+        jPanelBaixoTelaInicial.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelBaixoTelaInicial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelBaixoTelaInicial.setPreferredSize(new java.awt.Dimension(4, 30));
+
+        javax.swing.GroupLayout jPanelBaixoTelaInicialLayout = new javax.swing.GroupLayout(jPanelBaixoTelaInicial);
+        jPanelBaixoTelaInicial.setLayout(jPanelBaixoTelaInicialLayout);
+        jPanelBaixoTelaInicialLayout.setHorizontalGroup(
+            jPanelBaixoTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelBaixoTelaInicialLayout.setVerticalGroup(
+            jPanelBaixoTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        jMenuBarTelaInicial.setBackground(new java.awt.Color(204, 204, 204));
+        jMenuBarTelaInicial.setForeground(new java.awt.Color(0, 0, 0));
 
         jMenuBarOption.setText("Opções");
         jMenuBarTelaInicial.add(jMenuBarOption);
@@ -74,17 +93,16 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelIniciarTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanelIniciarTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBaixoTelaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelIniciarTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(jPanelBaixoTelaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -124,6 +142,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuBarOption;
     private javax.swing.JMenu jMenuBarSair;
     private javax.swing.JMenuBar jMenuBarTelaInicial;
+    private javax.swing.JPanel jPanelBaixoTelaInicial;
     private javax.swing.JPanel jPanelIniciarTotal;
     // End of variables declaration//GEN-END:variables
 

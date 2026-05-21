@@ -63,9 +63,9 @@ public class TelaCombate extends javax.swing.JFrame {
 
         String mensagem = "";
 
-        //mensagem += player1.getNome() + " ataca com " + dano + " de dano!\n";
+        mensagem += player1.getNome() + " ataca com " + dano + " de dano!\n";
 
-        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" +player1.getNome() + " ataca com " + dano + " de dano!\n");
+        enviaMensagem(mensagem);
         
         //pausa(1000);
         
@@ -90,9 +90,10 @@ public class TelaCombate extends javax.swing.JFrame {
             atualizarTela();
 
             mensagem += "\n====================\n";
-
+            
             enviaMensagem(mensagem);
 
+            computadorAtaca();
 
             //Envia para o método lutar na classe Luta.
             luta.lutar(player1, player2, 1);
@@ -161,6 +162,10 @@ public class TelaCombate extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "<html><b>" + player1.getGolpe() + " falhou!<br>Especial não está pronto!</b></html>", "Especial Falha", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public void computadorAtaca(){
+        jTextVisorCombate.setText(jTextVisorCombate.getText() + "\n" + player2.getNome() + " ataca!\n");
     }
 
     //Receber e transmitir texto para tela jTextVisorCombate.
